@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from project.models import Project
 from timelog.models import TimeLog
+from django.db.models import Sum
+
 
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for project"""
@@ -13,9 +15,4 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
         """
         Get work duration for current project
         """
-        duration = 0
-        timelogs = TimeLog.objects.filter(project=project)
-        for timelog in timelogs:
-            if timelog.duration:
-                duration += timelog.duration
-        return duration
+        return TimeLog.objects.filter(project=project).aggregate(Sum('duration'))['duration__sum']
