@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from timelog.models import TimeLog
+from timelog.serializers import TimeLogSerializer
 
-# Create your views here.
+
+class TimeLogViewSet(viewsets.ModelViewSet):
+    queryset = TimeLog.objects.all()
+    serializer_class = TimeLogSerializer
