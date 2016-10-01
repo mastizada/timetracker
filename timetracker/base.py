@@ -11,6 +11,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'common',
+    'team',
     'customer',
     'project',
     'timelog',

@@ -3,12 +3,17 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
+from team.models import Team
 
 class User(AbstractUser):
     """
     Custom user
     """
     name = models.CharField(_('name'), max_length=30, blank=False, null=False)
+    team = models.ForeignKey(
+        Team, related_name='users', blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
