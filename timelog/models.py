@@ -1,10 +1,11 @@
 from django.db import models
 from project.models import Project
+from common.models import User
+
 
 class TimeLog(models.Model):
-    """
-    Time Logger
-    """
+    """Time Logger."""
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False)
     started_at = models.DateTimeField(auto_now_add=False, null=False, blank=False)
     ended_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     duration = models.IntegerField(null=True, blank=True)
