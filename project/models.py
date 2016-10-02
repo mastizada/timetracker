@@ -19,12 +19,12 @@ class Project(models.Model):
         decimal_places=2,
         default=0
     )
-    # team = models.ForeignKey(
-    #     Team,
-    #     related_name='projects',
-    #     blank=False, null=False,
-    #     on_delete=models.CASCADE
-    # )
+    team = models.ForeignKey(
+        Team,
+        related_name='projects',
+        blank=False, null=False,
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
