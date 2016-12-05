@@ -18,6 +18,9 @@ def list_timelogs(request, project_pk=None, user_pk=None):
     # prepare user base totals:
     data = {'total': 0}
     for log in timelogs:
+        if not log.duration:
+            # not finished log
+            continue
         username = log.user.username
         if username in data.keys():
             data[username] += log.duration
