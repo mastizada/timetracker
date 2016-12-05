@@ -5,14 +5,14 @@ from django.contrib.auth.admin import UserAdmin
 
 class CustomUserAdmin(UserAdmin):
     """Custom user in Django Admin."""
-    list_display = ('pk', '__str__', 'email', 'team', 'modified_at',)
-    list_filter = ('team', )
+    list_display = ('pk', '__str__', 'email', 'modified_at',)
+    list_filter = ('teams', )
     fieldsets = (
         ('Account Info', {
             'fields': ('name', 'username', 'email', 'groups', 'is_staff', 'is_active',)
         }),
         ('Extra Details', {
-            'fields': ('team',)
+            'fields': ('teams',)
         }),
         ('Password', {
             'fields': ('password',)

@@ -10,10 +10,7 @@ class User(AbstractUser):
     Custom user
     """
     name = models.CharField(_('name'), max_length=30, blank=False, null=False)
-    team = models.ForeignKey(
-        Team, related_name='users', blank=True, null=True,
-        on_delete=models.SET_NULL
-    )
+    teams = models.ManyToManyField(Team)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
