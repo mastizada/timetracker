@@ -1,6 +1,7 @@
 # timetracker
 Time Tracker App
 
+Created for personal use. Can be helpful :)
 
 API URLS:
 ---------

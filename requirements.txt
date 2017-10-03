@@ -1,4 +1,5 @@
 Django
+django-flat-responsive
 djangorestframework
 django-allauth
 django-rest-auth
